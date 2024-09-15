@@ -1,0 +1,45 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "auth-app-riverpod",
+          "appId": "1:814901029007:android:2d0324ad7272ac682b28fa",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "auth-app-riverpod",
+          "appId": "1:814901029007:ios:cdb03e0004ffcdd42b28fa",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "auth-app-riverpod",
+          "configurations": {
+            "android": "1:814901029007:android:2d0324ad7272ac682b28fa",
+            "ios": "1:814901029007:ios:cdb03e0004ffcdd42b28fa",
+            "web": "1:814901029007:web:b766f88b2f10c2282b28fa"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
