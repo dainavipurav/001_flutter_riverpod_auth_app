@@ -10,8 +10,11 @@ import '../../main.dart';
 import '../../models/user.dart';
 
 class Register extends ConsumerWidget {
+  Register({super.key});
+
   final formKey = GlobalKey<FormState>();
 
+  final usernameController = TextEditingController();
   final firstNameController = TextEditingController();
   final middleNameController = TextEditingController();
   final lastNameController = TextEditingController();
@@ -22,6 +25,7 @@ class Register extends ConsumerWidget {
   final stateController = TextEditingController();
   final countryController = TextEditingController();
 
+  final usernameFocusNode = FocusNode();
   final firstNameFocusNode = FocusNode();
   final middleNameFocusNode = FocusNode();
   final lastNameFocusNode = FocusNode();
@@ -31,8 +35,6 @@ class Register extends ConsumerWidget {
   final cityFocusNode = FocusNode();
   final stateFocusNode = FocusNode();
   final countryFocusNode = FocusNode();
-
-  Register({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -70,6 +72,11 @@ class Register extends ConsumerWidget {
       key: formKey,
       child: Column(
         children: [
+          CommonTextField(
+            textEditingController: usernameController,
+            focusNode: usernameFocusNode,
+            label: username,
+          ),
           CommonTextField(
             textEditingController: firstNameController,
             focusNode: firstNameFocusNode,
@@ -148,6 +155,7 @@ class Register extends ConsumerWidget {
     }
 
     final user = User(
+      username: usernameController.text,
       firstName: firstNameController.text,
       middleName: middleNameController.text,
       lastName: lastNameController.text,

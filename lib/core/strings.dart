@@ -1,5 +1,6 @@
 part of 'utils.dart';
 
+const String username = 'Username';
 const String firstName = 'First Name';
 const String middleName = 'Middle Name';
 const String lastName = 'Last Name';

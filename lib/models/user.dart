@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @immutable
 class User {
+  final String username;
   final String firstName;
   final String middleName;
   final String lastName;
@@ -17,6 +18,7 @@ class User {
   final String country;
 
   const User({
+    required this.username,
     required this.firstName,
     required this.middleName,
     required this.lastName,
@@ -29,6 +31,7 @@ class User {
   });
 
   User copyWith({
+    String? username,
     String? firstName,
     String? middleName,
     String? lastName,
@@ -40,6 +43,7 @@ class User {
     String? country,
   }) {
     return User(
+      username: username ?? this.username,
       firstName: firstName ?? this.firstName,
       middleName: middleName ?? this.middleName,
       lastName: lastName ?? this.lastName,
@@ -54,6 +58,7 @@ class User {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'username': username,
       'firstName': firstName,
       'middleName': middleName,
       'lastName': lastName,
@@ -68,6 +73,7 @@ class User {
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
+      username: map['username'] as String,
       firstName: map['firstName'] as String,
       middleName: map['middleName'] as String,
       lastName: map['lastName'] as String,
@@ -87,14 +93,15 @@ class User {
 
   @override
   String toString() {
-    return 'User( firstName: $firstName, middleName: $middleName, lastName: $lastName, age: $age, password: $password, address: $address, city: $city, state: $state, country: $country)';
+    return 'User(username: $username, firstName: $firstName, middleName: $middleName, lastName: $lastName, age: $age, password: $password, address: $address, city: $city, state: $state, country: $country)';
   }
 
   @override
   bool operator ==(covariant User other) {
     if (identical(this, other)) return true;
 
-    return other.firstName == firstName &&
+    return other.username == username &&
+        other.firstName == firstName &&
         other.middleName == middleName &&
         other.lastName == lastName &&
         other.age == age &&
@@ -107,7 +114,8 @@ class User {
 
   @override
   int get hashCode {
-    return firstName.hashCode ^
+    return username.hashCode ^
+        firstName.hashCode ^
         middleName.hashCode ^
         lastName.hashCode ^
         age.hashCode ^
