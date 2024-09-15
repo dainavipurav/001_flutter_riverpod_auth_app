@@ -1,8 +1,8 @@
-import 'package:auth_app_riverpod/core/utils.dart';
-import 'package:auth_app_riverpod/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/utils.dart';
+import '../../main.dart';
 import '../../models/user.dart';
 import '../register/register.dart';
 
@@ -30,22 +30,22 @@ class Home extends ConsumerWidget {
           shrinkWrap: true,
           children: [
             Text(
-              'Welcome ${user.firstName} ${user.middleName} ${user.lastName}',
+              'Welcome ${user.username}',
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 30),
-            detailTile(title: firstName, description: user.firstName),
-            detailTile(title: middleName, description: user.middleName),
-            detailTile(title: lastName, description: user.lastName),
-            detailTile(title: age, description: user.age.toString()),
+            detailTile(title: firstName, description: user.firstName ?? ''),
+            detailTile(title: middleName, description: user.middleName ?? ''),
+            detailTile(title: lastName, description: user.lastName ?? ''),
+            detailTile(title: age, description: (user.age ?? 0).toString()),
             detailTile(title: password, description: user.password),
-            detailTile(title: address, description: user.address),
-            detailTile(title: city, description: user.city),
-            detailTile(title: state, description: user.state),
-            detailTile(title: country, description: user.country),
+            detailTile(title: address, description: user.address ?? ''),
+            detailTile(title: city, description: user.city ?? ''),
+            detailTile(title: state, description: user.state ?? ''),
+            detailTile(title: country, description: user.country ?? ''),
           ],
         ),
       ),
@@ -73,7 +73,7 @@ class Home extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              title,
+              '$title : ',
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

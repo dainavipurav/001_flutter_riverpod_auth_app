@@ -11,6 +11,9 @@ const String city = 'City';
 const String state = 'State';
 const String country = 'Country';
 
+const String alreadyRegistered = 'Already registered? Go to Login';
+const String goToRegister = 'Not have an account? Go to Register';
+
 const String mumbai = 'Mumbai';
 const String maharashtra = 'Maharashtra';
 const String india = 'India';

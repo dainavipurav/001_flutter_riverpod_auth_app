@@ -1,13 +1,15 @@
-import 'package:auth_app_riverpod/core/utils.dart';
-import 'package:auth_app_riverpod/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../components/common_text_field.dart';
 import '../../components/form_header.dart';
+import '../../components/navigation_text.dart';
+import '../../core/utils.dart';
 import '../../main.dart';
 import '../../models/user.dart';
+import '../home/home.dart';
+import '../login/login.dart';
 
 class Register extends ConsumerWidget {
   Register({super.key});
@@ -50,18 +52,28 @@ class Register extends ConsumerWidget {
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const FormHeader(title: 'Registration'),
-              const SizedBox(height: 30),
-              form(),
-              const SizedBox(height: 30),
-              registerButton(context, ref),
-            ],
-          ),
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const FormHeader(title: 'Registration'),
+            const SizedBox(height: 30),
+            form(),
+            const SizedBox(height: 30),
+            registerButton(context, ref),
+            const SizedBox(height: 10),
+            NavigationText(
+              text: alreadyRegistered,
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (ctx) => Login(),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -105,6 +117,7 @@ class Register extends ConsumerWidget {
             textEditingController: passwordController,
             focusNode: passwordFocusNode,
             label: password,
+            obscureText: true,
           ),
           CommonTextField(
             textEditingController: addressController,

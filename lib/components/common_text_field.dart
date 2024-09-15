@@ -7,6 +7,7 @@ class CommonTextField extends StatelessWidget {
   final FocusNode focusNode;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
+  final bool obscureText;
   const CommonTextField({
     super.key,
     required this.label,
@@ -14,6 +15,7 @@ class CommonTextField extends StatelessWidget {
     required this.focusNode,
     this.inputFormatters,
     this.keyboardType,
+    this.obscureText = false,
   });
 
   @override
@@ -26,6 +28,7 @@ class CommonTextField extends StatelessWidget {
         focusNode: focusNode,
         keyboardType: keyboardType,
         inputFormatters: inputFormatters,
+        obscureText: obscureText,
         validator: (value) {
           if (value == null ||
               value.toString().isEmpty ||

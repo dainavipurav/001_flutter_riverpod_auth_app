@@ -7,27 +7,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 @immutable
 class User {
   final String username;
-  final String firstName;
-  final String middleName;
-  final String lastName;
-  final int age;
+  final String? firstName;
+  final String? middleName;
+  final String? lastName;
+  final int? age;
   final String password;
-  final String address;
-  final String city;
-  final String state;
-  final String country;
+  final String? address;
+  final String? city;
+  final String? state;
+  final String? country;
 
   const User({
     required this.username,
-    required this.firstName,
-    required this.middleName,
-    required this.lastName,
-    required this.age,
+    this.firstName,
+    this.middleName,
+    this.lastName,
+    this.age,
     required this.password,
-    required this.address,
-    required this.city,
-    required this.state,
-    required this.country,
+    this.address,
+    this.city,
+    this.state,
+    this.country,
   });
 
   User copyWith({
